@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\build\zephyr.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\build\zephyr.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Mon Jul 13 15:46:56 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Mon Jul 13 16:22:29 2026
 <BR><P>
 <H3>Maximum Stack Usage =       1024 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -961,13 +961,13 @@ Global Symbols
 <LI><a href="#[241]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_att_chan_create_pdu
 <LI><a href="#[23a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;att_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_req_send
-<LI><a href="#[2d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_indicate
+<BR>[Called By]<UL><LI><a href="#[2d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_indicate
 <LI><a href="#[2db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_notify
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;att_read_group_req
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;att_read_type_req
 <LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_8
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;att_mtu_req
+<LI><a href="#[2d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_req_send
 </UL>
 
 <P><STRONG><a name="[26a]"></a>bt_att_get_mtu</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, att.o(.text.bt_att_get_mtu))
@@ -1012,11 +1012,11 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_buf_unref
 <LI><a href="#[267]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_mem_slab_free
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_req_send
-<LI><a href="#[2d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_indicate
+<BR>[Called By]<UL><LI><a href="#[2d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_indicate
 <LI><a href="#[26e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_att_req_cancel
 <LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;att_handle_rsp
 <LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_att_disconnected
+<LI><a href="#[2d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_req_send
 </UL>
 
 <P><STRONG><a name="[26f]"></a>bt_att_req_send</STRONG> (Thumb, 120 bytes, Stack size 16 bytes, att.o(.text.bt_att_req_send))
@@ -1025,8 +1025,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[23f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chan_req_send
 <LI><a href="#[23a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;att_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_req_send
-<LI><a href="#[2d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_indicate
+<BR>[Called By]<UL><LI><a href="#[2d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_indicate
+<LI><a href="#[2d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_req_send
 </UL>
 
 <P><STRONG><a name="[270]"></a>bt_att_send</STRONG> (Thumb, 150 bytes, Stack size 32 bytes, att.o(.text.bt_att_send))
@@ -1396,13 +1396,13 @@ Global Symbols
 <LI><a href="#[298]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_notify
 </UL>
 <BR>[Called By]<UL><LI><a href="#[282]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_conn_disconnect
-<LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_33
 <LI><a href="#[303]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;le_adv_start_add_conn
 <LI><a href="#[2a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_le_adv_resume
 <LI><a href="#[305]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_le_adv_start_legacy
 <LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enh_conn_complete
 <LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hci_disconn_complete
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hci_disconn_complete_prio
+<LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_33
 </UL>
 
 <P><STRONG><a name="[18d]"></a>bt_conn_unref</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, conn.o(.text.bt_conn_unref))
@@ -1943,7 +1943,8 @@ Global Symbols
 <LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_0
 <LI><a href="#[253]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_addr_le_cmp
 </UL>
-<BR>[Called By]<UL><LI><a href="#[320]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_setup_random_id_addr
+<BR>[Called By]<UL><LI><a href="#[24b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[320]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_setup_random_id_addr
 </UL>
 
 <P><STRONG><a name="[2ec]"></a>bt_id_del</STRONG> (Thumb, 212 bytes, Stack size 24 bytes, hci_core.o(.text.bt_id_del))
@@ -2246,14 +2247,14 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 864 + Unknown Stack Size
 <LI>Call Chain = bt_le_adv_stop &rArr; OUTLINED_FUNCTION_16 &rArr; bt_conn_unref &rArr; bt_le_adv_resume &rArr;  bt_conn_unref (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_33
-<LI><a href="#[30f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_14
+<BR>[Calls]<UL><LI><a href="#[30f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_14
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_16
 <LI><a href="#[302]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_19
 <LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_3
 <LI><a href="#[223]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_le_adv_enable_legacy
 <LI><a href="#[253]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_addr_le_cmp
 <LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_conn_lookup_state_le
+<LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_33
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop_adv
 </UL>
@@ -2733,11 +2734,12 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> bt_le_op.o(.data.conn_callbacks)
 </UL>
-<P><STRONG><a name="[369]"></a>display_led</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, gpio_control.o(.text.display_led))
+<P><STRONG><a name="[369]"></a>display_led</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, gpio_control.o(.text.display_led))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = display_led &rArr; printk &rArr; vprintk &rArr; cbvprintf &rArr; encode_uint &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[36a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_get
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_set
+<BR>[Calls]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_set
+<LI><a href="#[36a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_get
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_1
 <LI><a href="#[36b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_update_gpio18_status
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
 </UL>
@@ -2789,11 +2791,10 @@ Global Symbols
 <BR>[Address Reference Count : 2]<UL><LI> gpio_acts.o(.init_POST_KERNEL50)
 <LI> gpio_acts.o(.init_POST_KERNEL50)
 </UL>
-<P><STRONG><a name="[380]"></a>gpio_control_init</STRONG> (Thumb, 240 bytes, Stack size 16 bytes, gpio_control.o(.text.gpio_control_init))
+<P><STRONG><a name="[380]"></a>gpio_control_init</STRONG> (Thumb, 244 bytes, Stack size 16 bytes, gpio_control.o(.text.gpio_control_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = gpio_control_init &rArr; printk &rArr; vprintk &rArr; cbvprintf &rArr; encode_uint &rArr; __aeabi_uldivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_1
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_set
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_0
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_configure
 <LI><a href="#[346]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;z_impl_device_get_binding
@@ -3029,11 +3030,11 @@ Global Symbols
 <P><STRONG><a name="[3d0]"></a>k_sys_fatal_error_handler</STRONG> (Thumb, 140 bytes, Stack size 40 bytes, unwind.o(.text.k_sys_fatal_error_handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 416<LI>Call Chain = k_sys_fatal_error_handler &rArr; unwind_backtrace_print &rArr; OUTLINED_FUNCTION_0 &rArr; unwind_get_byte &rArr; printk &rArr; vprintk &rArr; cbvprintf &rArr; encode_uint &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[38a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_thread_foreach
-<LI><a href="#[3d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_dump_mem
+<BR>[Calls]<UL><LI><a href="#[3d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_dump_mem
 <LI><a href="#[3d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_backtrace_print
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
 <LI><a href="#[251]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
+<LI><a href="#[38a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_thread_foreach
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;z_fatal_error
 </UL>
@@ -3041,8 +3042,8 @@ Global Symbols
 <P><STRONG><a name="[38a]"></a>k_thread_foreach</STRONG> (Thumb, 52 bytes, Stack size 24 bytes, thread_1.o(.text.k_thread_foreach))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = k_thread_foreach
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_sys_fatal_error_handler
-<LI><a href="#[426]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;store_non_ret_buf
+<BR>[Called By]<UL><LI><a href="#[426]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;store_non_ret_buf
+<LI><a href="#[3d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_sys_fatal_error_handler
 <LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hci_disconn_complete
 </UL>
 
@@ -3106,7 +3107,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> soc_pm.o(.text.lpcmp_acts_irq_config)
 </UL>
-<P><STRONG><a name="[24b]"></a>main</STRONG> (Thumb, 384 bytes, Stack size 48 bytes, main.o(.text.main))
+<P><STRONG><a name="[24b]"></a>main</STRONG> (Thumb, 392 bytes, Stack size 48 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1016 + Unknown Stack Size
 <LI>Call Chain = main &rArr; system_ble_event_handle &rArr; start_adv &rArr; bt_le_adv_start &rArr; bt_le_adv_start_legacy &rArr; bt_conn_unref &rArr; bt_le_adv_resume &rArr;  bt_conn_unref (Cycle)
 </UL>
@@ -3120,8 +3121,9 @@ Global Symbols
 <LI><a href="#[3ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn_led_all_off
 <LI><a href="#[3ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_timer_init
 <LI><a href="#[311]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_le_op_init
-<LI><a href="#[3ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;settings_load
 <LI><a href="#[2b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_enable
+<LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
+<LI><a href="#[3ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;settings_load
 <LI><a href="#[3ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Load_Counter_First
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
 <LI><a href="#[3eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_app_init
@@ -3396,7 +3398,6 @@ Global Symbols
 <LI><a href="#[2e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hci_id_add
 <LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_34
 <LI><a href="#[2b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_init
-<LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_exchange_mtu_encode
 <LI><a href="#[2d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_indicate
 <LI><a href="#[2db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_notify
 <LI><a href="#[241]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_att_chan_create_pdu
@@ -3429,6 +3430,7 @@ Global Symbols
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_10
 <LI><a href="#[330]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;smp_create_pdu
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_write_ccc_buf
+<LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_exchange_mtu_encode
 </UL>
 
 <P><STRONG><a name="[37d]"></a>net_buf_simple_add_le16</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, buf.o(.text.net_buf_simple_add_le16))
@@ -3879,8 +3881,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[42b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vprintk
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_sys_fatal_error_handler
-<LI><a href="#[493]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_backtrace
+<BR>[Called By]<UL><LI><a href="#[493]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_backtrace
 <LI><a href="#[49b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_backtrace_cur
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_get_byte
 <LI><a href="#[49c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_print_backtrace
@@ -3902,6 +3903,7 @@ Global Symbols
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;connected
 <LI><a href="#[35d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conn_update
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;le_param_updated
+<LI><a href="#[44c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_name_mac
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exchange_func
 <LI><a href="#[313]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_adv
 <LI><a href="#[35e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop_adv
@@ -3945,6 +3947,7 @@ Global Symbols
 <LI><a href="#[3f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_manage_fault
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_0
 <LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;z_arm_fault
+<LI><a href="#[3d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_sys_fatal_error_handler
 <LI><a href="#[404]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;region_scan
 <LI><a href="#[436]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;region_erase
 <LI><a href="#[405]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;region_clear
@@ -4326,13 +4329,14 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[480]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_standby_init
 </UL>
 
-<P><STRONG><a name="[44c]"></a>set_name_mac</STRONG> (Thumb, 72 bytes, Stack size 48 bytes, bt_le_op.o(.text.set_name_mac))
-<BR><BR>[Stack]<UL><LI>Max Depth = 280 + Unknown Stack Size
-<LI>Call Chain = set_name_mac &rArr; snprintf &rArr; cbvprintf &rArr; encode_uint &rArr; __aeabi_uldivmod
+<P><STRONG><a name="[44c]"></a>set_name_mac</STRONG> (Thumb, 116 bytes, Stack size 48 bytes, bt_le_op.o(.text.set_name_mac))
+<BR><BR>[Stack]<UL><LI>Max Depth = 288 + Unknown Stack Size
+<LI>Call Chain = set_name_mac &rArr; printk &rArr; vprintk &rArr; cbvprintf &rArr; encode_uint &rArr; __aeabi_uldivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[44d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_set_name
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;snprintf
 <LI><a href="#[2ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_get
+<LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
 </UL>
 <BR>[Called By]<UL><LI><a href="#[313]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_adv
 </UL>
@@ -4586,11 +4590,11 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = store_non_ret_buf &rArr; printk &rArr; vprintk &rArr; cbvprintf &rArr; encode_uint &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[38a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_thread_foreach
-<LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
+<BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
 <LI><a href="#[42e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;push_thread_stk
 <LI><a href="#[22b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;push_s3_ret_buf
 <LI><a href="#[478]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bubble_sort_save_buf
+<LI><a href="#[38a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_thread_foreach
 </UL>
 <BR>[Called By]<UL><LI><a href="#[361]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pre_cpu_enter_deep_sleep
 </UL>
@@ -5127,11 +5131,11 @@ Global Symbols
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tc_hmac_set_key
 </UL>
 
-<P><STRONG><a name="[3ef]"></a>turn_led_all_off</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, gpio_control.o(.text.turn_led_all_off))
+<P><STRONG><a name="[3ef]"></a>turn_led_all_off</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, gpio_control.o(.text.turn_led_all_off))
 <BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = turn_led_all_off &rArr; printk &rArr; vprintk &rArr; cbvprintf &rArr; encode_uint &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_1
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_set
+<BR>[Calls]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_set
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_1
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_0
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
 </UL>
@@ -5465,11 +5469,11 @@ Global Symbols
 <P><STRONG><a name="[4a8]"></a>z_fatal_error</STRONG> (Thumb, 140 bytes, Stack size 24 bytes, fatal_1.o(.text.z_fatal_error))
 <BR><BR>[Stack]<UL><LI>Max Depth = 440<LI>Call Chain = z_fatal_error &rArr; k_sys_fatal_error_handler &rArr; unwind_backtrace_print &rArr; OUTLINED_FUNCTION_0 &rArr; unwind_get_byte &rArr; printk &rArr; vprintk &rArr; cbvprintf &rArr; encode_uint &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_sys_fatal_error_handler
-<LI><a href="#[29f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;z_impl_k_current_get
+<BR>[Calls]<UL><LI><a href="#[29f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;z_impl_k_current_get
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
 <LI><a href="#[494]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;thread_name_get
 <LI><a href="#[3d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;z_impl_k_thread_abort
+<LI><a href="#[3d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_sys_fatal_error_handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;z_arm_fatal_error
 </UL>
@@ -6087,7 +6091,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text.main)
 </UL>
-<P><STRONG><a name="[4f]"></a>battery_timer_expiry</STRONG> (Thumb, 108 bytes, Stack size 40 bytes, main.o(.text.battery_timer_expiry))
+<P><STRONG><a name="[4f]"></a>battery_timer_expiry</STRONG> (Thumb, 116 bytes, Stack size 40 bytes, main.o(.text.battery_timer_expiry))
 <BR><BR>[Stack]<UL><LI>Max Depth = 680 + Unknown Stack Size
 <LI>Call Chain = battery_timer_expiry &rArr; bt_set_battery_low &rArr; bt_refresh_advertising &rArr; bt_le_adv_update_data &rArr; le_adv_update &rArr; hci_set_ad &rArr; bt_hci_cmd_send_sync &rArr; net_buf_unref &rArr; net_buf_destroy &rArr; k_queue_prepend &rArr; OUTLINED_FUNCTION_0 &rArr; queue_insert &rArr; z_thread_aligned_alloc &rArr; k_heap_aligned_alloc &rArr; sys_heap_dump &rArr; heap_dump &rArr; printk &rArr; vprintk &rArr; cbvprintf &rArr; encode_uint &rArr; __aeabi_uldivmod
 </UL>
@@ -6164,21 +6168,13 @@ Local Symbols
 <LI><a href="#[380]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_control_init
 </UL>
 
-<P><STRONG><a name="[16a]"></a>gpio_pin_set</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, gpio_control.o(.text.gpio_pin_set))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = gpio_pin_set
-</UL>
-<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_1
-<LI><a href="#[369]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_led
-<LI><a href="#[3ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn_led_all_off
-<LI><a href="#[380]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_control_init
-</UL>
-
-<P><STRONG><a name="[169]"></a>OUTLINED_FUNCTION_1</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gpio_control.o(.text.OUTLINED_FUNCTION_1))
+<P><STRONG><a name="[169]"></a>OUTLINED_FUNCTION_1</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio_control.o(.text.OUTLINED_FUNCTION_1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = OUTLINED_FUNCTION_1 &rArr; gpio_pin_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn_led_all_off
+<BR>[Called By]<UL><LI><a href="#[369]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_led
+<LI><a href="#[3ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn_led_all_off
 <LI><a href="#[380]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_control_init
 </UL>
 
@@ -6197,6 +6193,14 @@ Local Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio18_callback
 <LI><a href="#[369]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_led
+</UL>
+
+<P><STRONG><a name="[16a]"></a>gpio_pin_set</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, gpio_control.o(.text.gpio_pin_set))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = gpio_pin_set
+</UL>
+<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_1
+<LI><a href="#[369]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_led
+<LI><a href="#[3ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn_led_all_off
 </UL>
 
 <P><STRONG><a name="[57]"></a>_rtc_callback</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, rtc_op.o(.text._rtc_callback))
@@ -6303,9 +6307,9 @@ Local Symbols
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_0
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_sys_fatal_error_handler
-<LI><a href="#[493]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_backtrace
+<BR>[Called By]<UL><LI><a href="#[493]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_backtrace
 <LI><a href="#[49b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_backtrace_cur
+<LI><a href="#[3d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_sys_fatal_error_handler
 </UL>
 
 <P><STRONG><a name="[3d2]"></a>unwind_dump_mem</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, unwind.o(.text.unwind_dump_mem))
@@ -6313,9 +6317,9 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_sys_fatal_error_handler
-<LI><a href="#[493]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_backtrace
+<BR>[Called By]<UL><LI><a href="#[493]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_backtrace
 <LI><a href="#[49b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unwind_backtrace_cur
+<LI><a href="#[3d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_sys_fatal_error_handler
 </UL>
 
 <P><STRONG><a name="[147]"></a>OUTLINED_FUNCTION_0</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, unwind.o(.text.OUTLINED_FUNCTION_0))
@@ -8277,11 +8281,11 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[251]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[30e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_le_adv_stop
+<LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
 <LI><a href="#[303]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;le_adv_start_add_conn
 <LI><a href="#[306]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;valid_adv_param
 <LI><a href="#[2eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;id_create
 <LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;id_find
-<LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
 <LI><a href="#[27b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_unpair
 </UL>
 
@@ -8442,13 +8446,13 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_enable
+<LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
 <LI><a href="#[38e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hci_set_ad
 <LI><a href="#[2f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hci_le_read_max_data_len
 <LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hci_tx_thread
 <LI><a href="#[2b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_init
 <LI><a href="#[316]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_pub_key_gen
 <LI><a href="#[305]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_le_adv_start_legacy
-<LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
 <LI><a href="#[2ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_del
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;le_ltk_request
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hci_encrypt_key_refresh_complete
@@ -8578,8 +8582,8 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[2ea]"></a>OUTLINED_FUNCTION_22</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, hci_core.o(.text.OUTLINED_FUNCTION_22))
-<BR><BR>[Called By]<UL><LI><a href="#[2b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_init
-<LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
+<BR><BR>[Called By]<UL><LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
+<LI><a href="#[2b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_init
 </UL>
 
 <P><STRONG><a name="[1b8]"></a>OUTLINED_FUNCTION_30</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, hci_core.o(.text.OUTLINED_FUNCTION_30))
@@ -8649,9 +8653,9 @@ Local Symbols
 
 <P><STRONG><a name="[2e8]"></a>OUTLINED_FUNCTION_3</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, hci_core.o(.text.OUTLINED_FUNCTION_3))
 <BR><BR>[Called By]<UL><LI><a href="#[30e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_le_adv_stop
+<LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
 <LI><a href="#[303]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;le_adv_start_add_conn
 <LI><a href="#[2eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;id_create
-<LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
 </UL>
 
 <P><STRONG><a name="[2e9]"></a>id_find</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, hci_core.o(.text.id_find))
@@ -8659,8 +8663,8 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[253]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_addr_le_cmp
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;id_create
-<LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
+<BR>[Called By]<UL><LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
+<LI><a href="#[2eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;id_create
 </UL>
 
 <P><STRONG><a name="[2eb]"></a>id_create</STRONG> (Thumb, 96 bytes, Stack size 32 bytes, hci_core.o(.text.id_create))
@@ -8675,8 +8679,8 @@ Local Symbols
 <LI><a href="#[259]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_addr_le_create_static
 <LI><a href="#[31e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_settings_save_id
 </UL>
-<BR>[Called By]<UL><LI><a href="#[31f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_setup_public_id_addr
-<LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
+<BR>[Called By]<UL><LI><a href="#[2e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_id_create
+<LI><a href="#[31f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_setup_public_id_addr
 </UL>
 
 <P><STRONG><a name="[302]"></a>OUTLINED_FUNCTION_19</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, hci_core.o(.text.OUTLINED_FUNCTION_19))
@@ -8904,9 +8908,9 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 888 + Unknown Stack Size
 <LI>Call Chain = hci_disconn_complete &rArr; hci_disconn_complete_prio &rArr; bt_conn_lookup_handle &rArr; conn_lookup_handle &rArr; bt_conn_unref &rArr; bt_le_adv_resume &rArr;  bt_conn_unref (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[38a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_thread_foreach
-<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_conn_unref
+<BR>[Calls]<UL><LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_conn_unref
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
+<LI><a href="#[38a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_thread_foreach
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_conn_set_state
 <LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_conn_lookup_handle
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hci_disconn_complete_prio
@@ -8992,7 +8996,6 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_conn_unref
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printk
-<LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_33
 <LI><a href="#[252]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_addr_copy
 <LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_12
 <LI><a href="#[256]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_addr_le_copy
@@ -9005,6 +9008,7 @@ Local Symbols
 <LI><a href="#[373]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_pending_connect
 <LI><a href="#[372]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_21
 <LI><a href="#[35c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conn_auto_initiate
+<LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_33
 </UL>
 <BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;le_enh_conn_complete
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;le_legacy_conn_complete
@@ -10521,8 +10525,8 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bt_att_req_alloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_req_send
-<LI><a href="#[2d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_indicate
+<BR>[Called By]<UL><LI><a href="#[2d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_indicate
+<LI><a href="#[2d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gatt_req_send
 </UL>
 
 <P><STRONG><a name="[3f]"></a>gatt_indicate_rsp</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, gatt.o(.text.gatt_indicate_rsp))
