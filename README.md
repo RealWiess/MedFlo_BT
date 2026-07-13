@@ -62,6 +62,12 @@ FW 檔產出至 `samples/template_drivers_test/outdir/tai_evb/_firmware/` 及專
 
 命名格式: `tai_evb_YYYYMMDD_HHMMSS_atf.fw`
 
+## 系統規格
+
+完整系統規格、運作流程、廣播格式、休眠參數、GPIO 腳位等，詳見 **[系統規格書 (medflo_bt_spec.md)](medflo_bt_spec.md)**。
+
+> ⚠️ **規格變更時，請同步更新 `medflo_bt_spec.md`！**
+
 ## 開發記錄
 
 詳見 [研發日誌](DEVLOG.md)
