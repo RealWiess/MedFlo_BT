@@ -1,7 +1,7 @@
 # MedFlo BT 廣播格式規格
 
 > 版本: JOHN01 正式版
-> FW: `tai_evb_20260713_220641_atf.fw`
+> FW: `tai_evb_20260713_222139_atf.fw`
 
 ---
 

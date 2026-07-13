@@ -192,10 +192,6 @@ void main(void)
 	}*/
 //	printk("===== RUN bt_le_op_init =====\n")
     printk("V02.00_B03_RTC_28_2_LedOk\r\n");
-	if (IS_ENABLED(CONFIG_BT_SETTINGS)) {
-		settings_load();
-	}
-
 	err = bt_enable(NULL);
 	if (err) {
 		printk("Bluetooth init failed (err %d)\n", err);
