@@ -24,7 +24,7 @@ static const struct device *gpio_dev;
 static struct gpio_callback gpio_cb;
 static struct k_work adv_update_work;
 extern uint8_t g_u8_gpio18_status;
-extern bool g_battery_low;   /* 低電量旗標，由 main.c 電池監控設定 */
+extern bool g_battery_low;
 
 void deActive_red_led(void);
 void deActive_green_led(void);
@@ -163,7 +163,6 @@ void display_led(void){
 	printk("KEY1 IN =%x\n\r",val);
 	bt_update_gpio18_status(val);
 
-	/* 低電量時關閉所有 LED 省電，繼續廣播直到沒電 */
 	if (g_battery_low) {
 		gpio_pin_set(gpio_dev, LED_GREEN_OUTPUT_PIN, 0);
 		gpio_pin_set(gpio_dev, LED_RED_OUTPUT_PIN, 0);

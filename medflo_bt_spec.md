@@ -1,7 +1,7 @@
 # MedFlo BT 系統規格書
 
-> 最後更新: 2026-07-13 (JOHN01 版本)
-> 對應 FW: `tai_evb_20260713_151756_atf.fw`
+> 最後更新: 2026-07-13 (JOHN01 正式版)
+> 對應 FW: `tai_evb_20260713_220641_atf.fw`
 
 ---
 
@@ -195,4 +195,4 @@ main() while loop ← receive_msg() ← k_fifo_get()
 | 日期 | 版本 | 變更 |
 |------|------|------|
 | 2026-05-11 | V02_03_29_1 | 原始版本 (耀宗提供) |
-| 2026-07-13 | JOHN01 | ① Manufacturer Data 加入 2 bytes Company ID (0xFFFF) ② 廣播間隔 50ms→100ms |
+| 2026-07-13 | JOHN01 | ① Manufacturer Data 加入 2 bytes Company ID (0xFFFF) + status flags ② 廣播間隔 50ms→100ms ③ 加入 `bt_id_create` MAC 持久化 ④ `BT_DATA_NAME_COMPLETE` ⑤ STOP_ADV 改為連續廣播 (不進 sleep) ⑥ 加入電池電壓監控 (ADC) ⑦ 低電量時關閉 LED 省電 ⑧ Keil post-build 修正 (AfterMake 關閉，fromelf 手動提取 .bin) |

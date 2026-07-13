@@ -30,12 +30,12 @@
 #include <rtc_op.h>
 #include <drivers/adc.h>
 
-bool g_battery_low = false;   /* 低電量旗標，gpio_control.c 讀取 */
-
-/* --- 電池監控實作 (ADC讀取IOVCC電壓) --- */
+/* --- 電池監控 (ADC讀取IOVCC電壓) --- */
 #define BATTERY_LOW_THRESHOLD_MV  2500
 #define SARADC_IOVCC2VOL(x)       ((x) * 3600 / 65536)
 #define SARADC_ID_IOVCC           (0)
+
+bool g_battery_low = false;
 
 static const struct device *batt_adc_dev;
 static struct adc_channel_cfg batt_channel_cfg;
@@ -192,20 +192,21 @@ void main(void)
 	}*/
 //	printk("===== RUN bt_le_op_init =====\n")
     printk("V02.00_B03_RTC_28_2_LedOk\r\n");
-
-	/* 先從 NVRAM 載入之前儲存的 MAC，再初始化 BT
-	 * 首次開機無記錄時，bt_id_create 生成隨機靜態位址並存入 NVRAM
-	 * 之後只要不擦除 NVRAM，MAC 就會固定 */
 	if (IS_ENABLED(CONFIG_BT_SETTINGS)) {
 		settings_load();
 	}
-	bt_id_create(NULL, NULL);
 
 	err = bt_enable(NULL);
 	if (err) {
 		printk("Bluetooth init failed (err %d)\n", err);
 		return;
 	}
+
+	if (IS_ENABLED(CONFIG_BT_SETTINGS)) {
+		settings_load();
+	}
+
+	bt_id_create(NULL, NULL);
 
 	bt_le_op_init();
 

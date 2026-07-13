@@ -347,7 +347,7 @@
 #define CONFIG_UART_0           1
 #define CONFIG_UART_0_NAME      "UART_0"
 #define CONFIG_UART_0_IRQ_PRI   0
-#define CONFIG_UART_0_SPEED     921600
+#define CONFIG_UART_0_SPEED     3000000
 #define CONFIG_UART_0_USE_TX_DMA   1
 #define CONFIG_UART_0_TX_DMA_CHAN  0x0
 #define CONFIG_UART_0_TX_DMA_ID    1

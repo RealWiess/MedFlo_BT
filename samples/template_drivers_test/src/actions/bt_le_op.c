@@ -36,14 +36,11 @@ uint8_t g_u8_gpio18_status;
 /* Manufacturer Data 結構:
  * [0-1] Company ID (0xFFFF)
  * [2]   GPIO18 狀態
- * [3]   Status flags (BIT0=低電量, BIT1=感測器異常)
- *
- * Bluetooth 規範要求 Manufacturer Data 前 2 bytes 為 Company ID
- * 0xFFFF 為 Bluetooth SIG 測試用 ID，正式產品需更換為申請的 CID */
+ * [3]   Status flags (BIT0=低電量, BIT1=感測器異常) */
 struct medflo_manufacturer_data {
 	uint16_t company_id;
 	uint8_t  gpio_status;
-	uint8_t  status_flags;   /* MEDFLO_FLAG_xxx */
+	uint8_t  status_flags;
 };
 static struct medflo_manufacturer_data mfg_data = {
 	.company_id = 0xFFFF,
@@ -66,7 +63,7 @@ struct bt_le_conn_param app_update_cfg = {
 
 void bt_update_gpio18_status(uint8_t val) {
     g_u8_gpio18_status = val;
-    mfg_data.gpio_status = val;  /* 同步更新 Manufacturer Data */
+    mfg_data.gpio_status = val;
 }
 
 void bt_refresh_advertising(void) {
@@ -80,7 +77,7 @@ void bt_set_battery_low(bool is_low)
 	} else {
 		mfg_data.status_flags &= ~MEDFLO_FLAG_BATTERY_LOW;
 	}
-	bt_refresh_advertising();  /* 立即更新廣播內容 */
+	bt_refresh_advertising();
 }
 
 void bt_set_sensor_alert(bool alert)
@@ -103,11 +100,6 @@ void set_name_mac(void) {
              "MEDFLO-%02X%02X%02X%02X%02X%02X",
              addr.a.val[5], addr.a.val[4], addr.a.val[3],
              addr.a.val[2], addr.a.val[1], addr.a.val[0]);
-
-    printk("DEVICE: %s\n", name_mac);
-    printk("MAC:    %02X:%02X:%02X:%02X:%02X:%02X\n",
-           addr.a.val[5], addr.a.val[4], addr.a.val[3],
-           addr.a.val[2], addr.a.val[1], addr.a.val[0]);
 
     bt_set_name(name_mac);
 }

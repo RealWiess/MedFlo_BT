@@ -73,9 +73,44 @@
 
 ---
 
+---
+
+## 2026-07-13 系統性 Debug 與正式版釋出
+
+### 重大發現: Keil Post-Build 導致假 Binary
+- Keil MDK 的 AfterMake post-build step (UserCommand.bat, PackCommand.bat) 因 CreateProcess 失敗
+- post-build 失敗導致 Keil 刪除 .axf，build_fw.py 吃到舊的 pre-built .bin
+- **之前所有 JOHN01 測試 FW 均未包含程式碼修改！**
+- 解法: 關閉 `mdk_clang.uvprojx` 的 AfterMake (`RunUserProg1=0`, `RunUserProg2=0`)
+- 手動用 fromelf 提取 .bin，再執行 build_fw.py
+- 建立 `build.sh` 一鍵編譯腳本
+
+### 逐項變更驗證 (從 V02_03_29_1 原始版逐步加入)
+
+| # | 變更 | 結果 | 說明 |
+|---|------|:--:|------|
+| B | `bt_id_create` MAC 持久化 | ✅ | 搭配 `settings_load`，NVRAM 無記錄時新建隨機靜態位址 |
+| E | 廣播間隔 50ms→100ms (`0xA0`) | ✅ | 省電 50% |
+| G | Manufacturer Data 1→4 bytes | ✅ | 加入 Company ID (0xFFFF) + status flags |
+| H | `BT_DATA_NAME_SHORTENED`→`COMPLETE` | ✅ | 完整裝置名稱 |
+| D | STOP_ADV 不進 sleep，立即重啟廣播 | ✅ | 連續廣播不中斷 |
+| C | 電池電壓監控 (ADC) | ✅ | 每 30s 檢查，低於 2500mV 觸發低電量旗標 |
+| I | LED 低電量檢查 | ✅ | `g_battery_low` 為 true 時關閉 LED 省電 |
+| A | `settings_load` 移到 `bt_enable` 之前 | ❌ | 導致 BLE 無法廣播。原因: BT settings handler 需在 `bt_enable` 後才註冊 |
+
+### 環境修正
+- `autoconf.h`: `CONFIG_UART_0_SPEED` 從 921600 改為 3000000 (與原始版一致)
+- `mdk_clang.uvprojx`: AfterMake RunUserProg 改為 0
+
+### 正式版 FW
+- **`tai_evb_20260713_220641_atf.fw`** (Code=97,180, RO=15,456, RW=10,068, ZI=6,040)
+
+---
+
 ## 版本歷程
 
 | 日期 | 版本 | 變更說明 |
 |------|------|----------|
 | 2026-05-11 | V02_03_29_1 | 耀宗提供原始版本 |
 | 2026-07-13 | JOHN01_20260713_01 | 建立開發分支、修正 Manufacturer Data、優化廣播間隔、建立專案文檔 |
+| 2026-07-13 | **JOHN01 正式版** | 7 項改良 (見上方驗證表) + Keil build 流程修正 + `build.sh` |
