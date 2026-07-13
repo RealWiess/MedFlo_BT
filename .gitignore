@@ -1,0 +1,15 @@
+# Build artifacts
+samples/template_drivers_test/keil/build/
+samples/template_drivers_test/keil/*.log
+samples/template_drivers_test/keil/build_log.txt
+samples/template_drivers_test/outdir/
+
+# FW files in root (keep only final releases)
+*.fw
+
+# Temp files
+/tmp/
+
+# IDE
+*.uvopt
+*.uvguix.*
