@@ -58,15 +58,18 @@
 - **影響檔案**: `samples/template_drivers_test/src/include/bt_le_op.h`
 - **預期效果**: 廣播功耗降低約 50%，延長電池壽命
 
-### 修改 3: 產出 FW 檔
-- FW 產出路徑: `tai_evb_20260713_144241_atf.fw` (專案根目錄)
+### 修改 3: 產出 FW 檔 (含本次程式碼修改)
+- **授權解決**: 啟用 Keil MDK Community Edition (免費授權，有效至 2033 年)
+- **編譯成功**: Code=96892 RO-data=15356 RW-data=10068 ZI-data=5968
+  - 與舊版差異: Code +8 bytes, RW-data +4 bytes (符合預期)
+- **FW 產出**: `tai_evb_20260713_151756_atf.fw` (專案根目錄，含完整程式碼修改)
 - 同時存放於 `outdir/tai_evb/_firmware/tai_evb_260713_atf.fw`
-- **⚠️ 注意**: 因 Keil MDK 授權僅支援 Cortex-M0/M0+/M23 (目前授權: Nuvoton)，無法重新編譯 Cortex-M4 目標。目前 FW 使用舊版 zephyr.bin (2026-05-11)。需要有效的 Cortex-M4 授權才能將程式碼修改編譯進去。
 
-### 已知技術限制
-- Keil MDK license: `MDK-ARM Cortex-M0/M0+/M23 for Nuvoton` (不支援 ATB1113 的 Cortex-M4)
-- armclang 錯誤: `R203(8): EVALUATION PERIOD EXPIRED`
-- 需要更新 Keil 授權或使用其他 ARM 編譯器
+### 技術筆記
+- 原 Nuvoton 授權 (M0/M23 only) 無法編譯 Cortex-M4 目標
+- Keil MDK Community Edition 為永久免費非商業授權
+- 啟用方式: File → License Management → User-Based License → License Server `https://mdk-preview.keil.arm.com`
+- 需安裝 ARM.Cortex_DFP.1.1.0 pack (已手動解壓縮至 `%LOCALAPPDATA%\Arm\Packs\ARM\Cortex_DFP\1.1.0\`)
 
 ---
 
