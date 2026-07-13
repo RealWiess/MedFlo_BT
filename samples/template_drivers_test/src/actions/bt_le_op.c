@@ -104,6 +104,11 @@ void set_name_mac(void) {
              addr.a.val[5], addr.a.val[4], addr.a.val[3],
              addr.a.val[2], addr.a.val[1], addr.a.val[0]);
 
+    printk("DEVICE: %s\n", name_mac);
+    printk("MAC:    %02X:%02X:%02X:%02X:%02X:%02X\n",
+           addr.a.val[5], addr.a.val[4], addr.a.val[3],
+           addr.a.val[2], addr.a.val[1], addr.a.val[0]);
+
     bt_set_name(name_mac);
 }
 
