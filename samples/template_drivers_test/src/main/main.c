@@ -30,6 +30,8 @@
 #include <rtc_op.h>
 #include <drivers/adc.h>
 
+bool g_battery_low = false;   /* 低電量旗標，gpio_control.c 讀取 */
+
 /* --- 電池監控實作 (ADC讀取IOVCC電壓) --- */
 #define BATTERY_LOW_THRESHOLD_MV  2500
 #define SARADC_IOVCC2VOL(x)       ((x) * 3600 / 65536)
@@ -72,9 +74,10 @@ static int battery_check_and_update(void)
 	voltage_mv = SARADC_IOVCC2VOL(sample_buffer[0]);
 	if (voltage_mv < BATTERY_LOW_THRESHOLD_MV) {
 		printk("BATTERY: %dmV LOW!\n", voltage_mv);
+		g_battery_low = true;
 		bt_set_battery_low(true);
 	} else {
-		printk("BATTERY: %dmV OK\n", voltage_mv);
+		g_battery_low = false;
 		bt_set_battery_low(false);
 	}
 	return voltage_mv;
