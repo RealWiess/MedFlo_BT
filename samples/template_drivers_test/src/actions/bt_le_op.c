@@ -47,7 +47,7 @@ static struct medflo_manufacturer_data mfg_data = {
 
 struct bt_data ad[] = {
 	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
-	BT_DATA(BT_DATA_NAME_SHORTENED, name_mac, sizeof(name_mac)-1),
+	BT_DATA(BT_DATA_NAME_COMPLETE, name_mac, sizeof(name_mac)-1),
 	BT_DATA(BT_DATA_MANUFACTURER_DATA, &mfg_data, sizeof(mfg_data)),
 };
 
