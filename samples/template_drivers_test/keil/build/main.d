@@ -75,4 +75,6 @@
   ..\..\..\include\generated\syscalls\device.h \
   ..\..\..\include\drivers\input\input_dev.h \
   ..\src\include\gpio_control.h ..\..\..\include\drivers\gpio.h \
-  ..\..\..\include\generated\syscalls\gpio.h ..\src\include\rtc_op.h
+  ..\..\..\include\generated\syscalls\gpio.h ..\src\include\rtc_op.h \
+  ..\..\..\include\drivers\adc.h \
+  ..\..\..\include\generated\syscalls\adc.h

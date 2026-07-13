@@ -1,0 +1,12 @@
+*** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'zephyr'
+Note: source file '..\..\..\kernel\fatal.c' - object file renamed from '.\build\fatal.o' to '.\build\fatal_1.o'.Note: source file '..\..\..\kernel\thread.c' - object file renamed from '.\build\thread.o' to '.\build\thread_1.o'.Note: source file '..\..\..\kernel\thread_abort.c' - object file renamed from '.\build\thread_abort.o' to '.\build\thread_abort_1.o'.Note: source file '..\..\..\lib\os\sem.c' - object file renamed from '.\build\sem.o' to '.\build\sem_1.o'.Note: source file '..\..\..\lib\os\work_q.c' - object file renamed from '.\build\work_q.o' to '.\build\work_q_1.o'.Note: source file '..\..\..\subsys\power\device.c' - object file renamed from '.\build\device.o' to '.\build\device_1.o'.Note: source file '..\..\..\lib\libc\minimal\source\string\string.S' - object file renamed from '.\build\string.o' to '.\build\string_1.o'.Note: source file '..\..\..\lib\libc\minimal\source\string\string.S' - object file renamed from '.\build\string.o' to '.\build\string_1.o'.Note: source file '..\..\..\subsys\bluetooth\host\settings.c' - object file renamed from '.\build\bt_settings.o' to '.\build\bt_settings.o'.Note: source file '..\..\..\subsys\bluetooth\host\buf.c' - object file renamed from '.\build\bt_buf.o' to '.\build\bt_buf.o'.Note: source file '..\..\..\subsys\bluetooth\host\crypto.c' - object file renamed from '.\build\bt_crypto.o' to '.\build\bt_crypto.o'.Note: source file '..\..\..\subsys\bluetooth\host\smp.c' - object file renamed from '.\build\smp.o' to '.\build\smp_1.o'.compiling main.c...
+linking...
+Program Size: Code=97144 RO-data=15456 RW-data=10068 ZI-data=6040  
+After Build - User command #1: UserCommand.bat ".\build\zephyr.axf" "C:\Keil_v5\\ARM"
+*** Error: CreateProcess failed, Command: 'UserCommand.bat ".\build\zephyr.axf" "C:\Keil_v5\\ARM"'
+After Build - User command #2: PackCommand.bat
+*** Error: CreateProcess failed, Command: 'PackCommand.bat'
+".\build\zephyr.axf" - 2 Error(s), 0 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:02

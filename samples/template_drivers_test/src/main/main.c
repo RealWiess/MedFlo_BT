@@ -28,6 +28,57 @@
 #include "gpio_control.h"
 #include <drivers/gpio.h>
 #include <rtc_op.h>
+#include <drivers/adc.h>
+
+/* --- 電池監控實作 (ADC讀取IOVCC電壓) --- */
+#define BATTERY_LOW_THRESHOLD_MV  2500
+#define SARADC_IOVCC2VOL(x)       ((x) * 3600 / 65536)
+#define SARADC_ID_IOVCC           (0)
+
+static const struct device *batt_adc_dev;
+static struct adc_channel_cfg batt_channel_cfg;
+
+static const struct device *battery_monitor_init(void)
+{
+	batt_adc_dev = device_get_binding(CONFIG_SARADC_NAME);
+	if (batt_adc_dev == NULL) {
+		printk("BATTERY: ADC device not found\n");
+		return NULL;
+	}
+	batt_channel_cfg.channel_id = SARADC_ID_IOVCC;
+	batt_channel_cfg.gain       = ADC_GAIN_1;
+	batt_channel_cfg.reference  = ADC_REF_INTERNAL;
+	batt_channel_cfg.acquisition_time = ADC_ACQ_TIME_DEFAULT;
+	if (adc_channel_setup(batt_adc_dev, &batt_channel_cfg) < 0) {
+		printk("BATTERY: ADC channel setup failed\n");
+		return NULL;
+	}
+	printk("BATTERY: monitor OK, threshold %dmV\n", BATTERY_LOW_THRESHOLD_MV);
+	return batt_adc_dev;
+}
+
+static int battery_check_and_update(void)
+{
+	uint16_t sample_buffer[1];
+	int voltage_mv;
+	if (batt_adc_dev == NULL) return -1;
+	const struct adc_sequence sequence = {
+		.channels    = BIT(batt_channel_cfg.channel_id),
+		.buffer      = sample_buffer,
+		.buffer_size = sizeof(sample_buffer),
+		.resolution  = 16,
+	};
+	if (adc_read(batt_adc_dev, &sequence) < 0) return -2;
+	voltage_mv = SARADC_IOVCC2VOL(sample_buffer[0]);
+	if (voltage_mv < BATTERY_LOW_THRESHOLD_MV) {
+		printk("BATTERY: %dmV LOW!\n", voltage_mv);
+		bt_set_battery_low(true);
+	} else {
+		printk("BATTERY: %dmV OK\n", voltage_mv);
+		bt_set_battery_low(false);
+	}
+	return voltage_mv;
+}
 
 extern uint32_t rtc_period;
 extern uint32_t counter;
@@ -39,9 +90,11 @@ extern int checkDeviceLifeCycle(void);
 extern void test_for_gpio(void);
 struct k_timer periodic_timer;
 struct k_timer led_periodic_timer;
+struct k_timer battery_timer;
 
 #define dwelltime 29000  //29Sec
 #define sleeptime 1000000 //1Sec
+#define BATTERY_CHECK_INTERVAL 30000  //30Sec
 static void periodic_timer_expiry(struct k_timer *timer)
 {
 	app_to_msg(MSG_BLE_STATE, STOP_ADV);
@@ -52,6 +105,10 @@ static void led_periodic_timer_expiry(struct k_timer *timer)
 {
 	display_led();
 //	printk("timer100ms\r\n");
+}
+static void battery_timer_expiry(struct k_timer *timer)
+{
+	battery_check_and_update();
 }
 
 void stop_periodic_timer(void)
@@ -150,6 +207,13 @@ void main(void)
 	k_timer_init(&led_periodic_timer, led_periodic_timer_expiry, NULL);
 	k_timer_start(&led_periodic_timer, K_MSEC(100), K_MSEC(100));
 	turn_led_all_off();
+
+	/* 電池監控: 每 30 秒檢查電壓 */
+	if (battery_monitor_init() != NULL) {
+		k_timer_init(&battery_timer, battery_timer_expiry, NULL);
+		k_timer_start(&battery_timer, K_MSEC(BATTERY_CHECK_INTERVAL),
+			      K_MSEC(BATTERY_CHECK_INTERVAL));
+	}
 	rtc_init_once();
 	
 	while (1)
