@@ -180,12 +180,9 @@ void main(void)
 						k_timer_stop(&led_periodic_timer);
 						turn_led_all_off();
 						update_counter();
-			
 
-//						printk("entry sleep \r\n");
-//						rtc_setup_wakeup(5000000);
-						rtc_setup_wakeup(sleeptime);
-//						rtc_start(rtc_period);
+						/* 不進睡眠，直接重新廣播 (連續廣播不中斷) */
+						app_to_msg(MSG_BLE_STATE, START_ADV);
 					}
 					break;
 				default:
