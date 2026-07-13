@@ -33,10 +33,22 @@ static struct bt_conn *slave_conn;
 char name_mac[20];
 uint8_t g_u8_gpio18_status;
 
+/* Manufacturer Data 結構: 2 bytes Company ID + 1 byte GPIO 狀態
+ * Bluetooth 規範要求 Manufacturer Data 前2 bytes 為 Company ID
+ * 0xFFFF 為 Bluetooth SIG 測試用 ID，正式產品需更換為申請的 CID */
+struct medflo_manufacturer_data {
+	uint16_t company_id;
+	uint8_t gpio_status;
+};
+static struct medflo_manufacturer_data mfg_data = {
+	.company_id = 0xFFFF,
+	.gpio_status = 0,
+};
+
 struct bt_data ad[] = {
 	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
 	BT_DATA(BT_DATA_NAME_SHORTENED, name_mac, sizeof(name_mac)-1),
-	BT_DATA(BT_DATA_MANUFACTURER_DATA, &g_u8_gpio18_status, sizeof(g_u8_gpio18_status)),
+	BT_DATA(BT_DATA_MANUFACTURER_DATA, &mfg_data, sizeof(mfg_data)),
 };
 
 struct bt_le_conn_param app_update_cfg = {
@@ -48,6 +60,7 @@ struct bt_le_conn_param app_update_cfg = {
 
 void bt_update_gpio18_status(uint8_t val) {
     g_u8_gpio18_status = val;
+    mfg_data.gpio_status = val;  /* 同步更新 Manufacturer Data */
 }
 
 void bt_refresh_advertising(void) {

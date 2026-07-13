@@ -6,8 +6,9 @@
 #include <device.h>
 #include <drivers/input/input_dev.h>
 
-/* Advertising interval: 50ms */
-#define APP_ADV_INTERVAL  0x50
+/* Advertising interval: 100ms (0xA0 * 0.625ms = 100ms)
+ * 由原本 50ms 調至 100ms 以節省功耗，延長電池壽命 */
+#define APP_ADV_INTERVAL  0xA0
 
 #define APP_ADV_PARAM BT_LE_ADV_PARAM(BT_LE_ADV_OPT_CONNECTABLE, \
 				     APP_ADV_INTERVAL, \
