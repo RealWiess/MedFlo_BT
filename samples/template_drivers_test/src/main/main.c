@@ -31,7 +31,7 @@
 #include <drivers/adc.h>
 
 /* --- 電池監控 (ADC讀取IOVCC電壓) --- */
-#define BATTERY_LOW_THRESHOLD_MV  2500
+#define BATTERY_LOW_THRESHOLD_MV  2700
 #define SARADC_IOVCC2VOL(x)       ((x) * 3600 / 65536)
 #define SARADC_ID_IOVCC           (0)
 

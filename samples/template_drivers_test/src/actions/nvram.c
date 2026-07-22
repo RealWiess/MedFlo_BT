@@ -78,11 +78,5 @@ void update_counter_in_nvram(void) {
 }
 
 int checkDeviceLifeCycle(void){
-	int ret=0;
-	if(counter>=DeviceMaximumRunningCount){
-		counter=DeviceMaximumRunningCount+10;
-//		ret = nvram_config_set(KEY_BOOT_COUNT, &counter, sizeof(counter));
-		ret= -1;
-	}
-	return ret;
+	return 0;  /* JOHN01: lifecycle limit disabled for battery-life testing */
 }

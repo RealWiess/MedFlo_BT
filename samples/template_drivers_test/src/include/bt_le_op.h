@@ -6,12 +6,18 @@
 #include <device.h>
 #include <drivers/input/input_dev.h>
 
-/* Advertising interval: 100ms (0xA0 * 0.625ms = 100ms) */
-#define APP_ADV_INTERVAL  0xA0
+/* Advertising interval: 100ms (0xA0 * 0.625ms = 100ms) — 上電前 5 秒使用 */
+#define APP_ADV_INTERVAL_FAST  0xA0
+/* Advertising interval: 500ms (0x320 * 0.625ms = 500ms) — 5 秒後切換省電 */
+#define APP_ADV_INTERVAL_SLOW  0x320
 
-#define APP_ADV_PARAM BT_LE_ADV_PARAM(BT_LE_ADV_OPT_CONNECTABLE, \
-				     APP_ADV_INTERVAL, \
-				     APP_ADV_INTERVAL, NULL)
+#define APP_ADV_PARAM_FAST BT_LE_ADV_PARAM(BT_LE_ADV_OPT_CONNECTABLE, \
+				     APP_ADV_INTERVAL_FAST, \
+				     APP_ADV_INTERVAL_FAST, NULL)
+
+#define APP_ADV_PARAM_SLOW BT_LE_ADV_PARAM(BT_LE_ADV_OPT_CONNECTABLE, \
+				     APP_ADV_INTERVAL_SLOW, \
+				     APP_ADV_INTERVAL_SLOW, NULL)
 
 void system_ble_event_handle(uint32_t event);
 void system_input_event_handle(uint32_t key_event);

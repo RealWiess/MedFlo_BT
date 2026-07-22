@@ -55,8 +55,8 @@ struct bt_data ad[] = {
 };
 
 struct bt_le_conn_param app_update_cfg = {
-	.interval_min = (10),
-	.interval_max = (10),
+	.interval_min = (40),   /* 40 × 1.25ms = 50ms */
+	.interval_max = (40),
 	.latency = (0),
 	.timeout = (400),
 };
@@ -126,20 +126,36 @@ void le_param_updated(struct bt_conn *conn, uint16_t interval,
 	printk("Exchange %s mtu:%d\n", err == 0 ? "successful" : "failed",mtu);
  }
 
- static struct bt_gatt_exchange_params exchange_params = {
+static struct bt_gatt_exchange_params exchange_params = {
 	 .func = exchange_func,
  };
+
+/* 上電前 5 秒用 100ms 快速廣播，之後切換為 500ms 省電 */
+static struct k_timer slow_adv_timer;
+static bool adv_is_slow = false;
+
+static void switch_to_slow_adv(struct k_timer *timer)
+{
+	bt_le_adv_stop();
+	bt_le_adv_start(APP_ADV_PARAM_SLOW, ad, ARRAY_SIZE(ad), NULL, 0);
+	adv_is_slow = true;
+	printk("Switched to slow advertising (500ms interval)\n");
+}
 
 static int start_adv(void)
 {
 	int err;
 	set_name_mac();
-	err = bt_le_adv_start(APP_ADV_PARAM, ad, ARRAY_SIZE(ad), NULL, 0);
+	err = bt_le_adv_start(APP_ADV_PARAM_FAST, ad, ARRAY_SIZE(ad), NULL, 0);
 	if (err) {
 		printk("Advertising failed to start (err %d)\n", err);
 		return err;
 	}
-	printk("Advertising successfully started\n");
+	printk("Advertising successfully started (100ms fast interval)\n");
+	/* 上電 5 秒後切換為 500ms 慢速省電廣播 */
+	if (!adv_is_slow) {
+		k_timer_start(&slow_adv_timer, K_SECONDS(5), K_NO_WAIT);
+	}
 	return 0;
 }
 
@@ -308,6 +324,8 @@ void bt_le_op_init(void)
 	bt_conn_cb_register((struct bt_conn_cb *)&conn_callbacks);
 
 	bt_data_trans_init();
+
+	k_timer_init(&slow_adv_timer, switch_to_slow_adv, NULL);
 
 	start_adv();
 }
